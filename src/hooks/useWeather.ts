@@ -1,6 +1,17 @@
 import axios from "axios";
 import { type Weather, type SearchType } from "../types";
 
+function isWeatherResponse(weather : unknown) : weather is Weather {
+    return (
+        Boolean(weather) && 
+        typeof weather === 'object' && 
+        typeof (weather as Weather).name === 'string' &&
+        typeof (weather as Weather).main.temp === 'number' &&
+        typeof (weather as Weather).main.temp_max === 'number' &&
+        typeof (weather as Weather).main.temp_min === 'number'
+  )
+}
+
 export default function useWeather() {
     const fetchWeather = async (search: SearchType) => {
         const appid = import.meta.env.VITE_API_KEY;
@@ -15,10 +26,18 @@ export default function useWeather() {
 
             const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appid}`
            
-            const {data: weatherResult} = await axios<Weather>(weatherUrl);
-            console.log(weatherResult.main.temp);
-            console.log(weatherResult.main.temp_max);
-            console.log(weatherResult.name)
+            // const {data: weatherResult} = await axios<Weather>(weatherUrl);
+            // console.log(weatherResult.main.temp);
+            // console.log(weatherResult.main.temp_max);
+            // console.log(weatherResult.name)
+
+            //Type Guards
+            const {data: weatherResult} = await axios(weatherUrl);
+            const result = isWeatherResponse(weatherResult)
+            
+            if(result){
+                console.log(weatherResult.name)
+            }
         } catch (error) {
             console.log(error);
         }
