@@ -2,36 +2,71 @@
 .field {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
+}
+
+.form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: var(--shadow-xl);
 }
 
 .form input[type="text"],
 .form select {
-    padding: 1rem;
-    background-color: transparent;
-    border: .3rem solid var(--white);
+    padding: 1.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     color: var(--white);
     font-size: 1.8rem;
     font-weight: 400;
-    border-radius: 1rem;
+    border-radius: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
+
+.form input[type="text"]:focus,
+.form select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2), var(--shadow-md);
+    transform: translateY(-2px);
+}
+
 .form select option {
-	background-color: white;
-	color: black;
+	background-color: #4a5568;
+	color: white;
 } 
 
 .field ::placeholder {
-    color: var(--white);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .submit {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     border: none;
     color: var(--white);
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: 1.5rem 3rem;
+    border-radius: 1.2rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.submit:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+.submit:active {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }

@@ -1,21 +1,30 @@
 .title {
     text-align: center;
-    font-size: 3rem;
-    margin-top: 5rem;
+    font-size: 4.5rem;
+    margin-top: 3rem;
+    font-weight: 800;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
+    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .container {
     width: 95%;
-    max-width: 100rem;
+    max-width: 110rem;
     margin: 0 auto;
+    padding: 2rem 0;
 }
 
 @media (min-width: 768px) {
     .container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        gap: 4rem;
-        margin-top: 5rem;
+        align-items: start;
+        gap: 5rem;
+        margin-top: 4rem;
+        padding: 3rem 0;
     }
 }
